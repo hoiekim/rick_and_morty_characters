@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { rickAndMorty } from "./lib/graphql";
+import ItemCard from "./components/ItemCard";
 
-function App() {
+const App = () => {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    rickAndMorty(`
+      query {
+        characters(page: 2, filter: { name: "rick" }) {
+          info { count }
+          results { name }
+        }
+        location(id: 1) { id }
+        episodesByIds(ids: [1, 2]) { id }
+      }
+    `).then((r) => setCharacters(r?.characters.results));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {characters?.map((e, i) => (
+        <ItemCard key={i} data={e} />
+      ))}
     </div>
   );
-}
+};
 
 export default App;
