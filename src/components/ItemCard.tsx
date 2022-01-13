@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface ItemCardProps {
   data: {
     id: string;
@@ -7,16 +9,20 @@ interface ItemCardProps {
   };
 }
 
-export default ({ data }: ItemCardProps) => {
-  const { name, status, species } = data;
+const ItemCard = ({ data }: ItemCardProps) => {
+  const { id, name, status, species } = data;
   return (
     <div className="item_card">
-      <div className="item_card---title">{name}</div>
-      <div className="item_card---info">
-        <span>
-          {status} | {species}
-        </span>
-      </div>
+      <Link to={`/${id}`}>
+        <div className="item_card---title">{name}</div>
+        <div className="item_card---info">
+          <span>
+            {status} | {species}
+          </span>
+        </div>
+      </Link>
     </div>
   );
 };
+
+export default ItemCard;
