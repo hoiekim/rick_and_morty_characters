@@ -9,21 +9,21 @@ const App = () => {
   useEffect(() => {
     rickAndMorty(`
       query {
-        characters(page: 2, filter: { name: "rick" }) {
-          info { count }
-          results { name }
+        characters(page: 1, filter: { name: "rick" }) {
+          results { id name status species }
         }
-        location(id: 1) { id }
-        episodesByIds(ids: [1, 2]) { id }
       }
     `).then((r) => setCharacters(r?.characters.results));
   }, []);
 
   return (
-    <div>
-      {characters?.map((e, i) => (
-        <ItemCard key={i} data={e} />
-      ))}
+    <div className="body">
+      <div className="title">Rick and Morty Characters</div>
+      <div className="list">
+        {characters?.map((e, i) => (
+          <ItemCard key={i} data={e} />
+        ))}
+      </div>
     </div>
   );
 };
