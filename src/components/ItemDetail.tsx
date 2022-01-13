@@ -45,52 +45,47 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
   return (
     <div className="item_detail" onClick={() => navigate(`/${page}`)}>
       <div className="item_detail---box">
+        <div className="item_detail---box---name">{name}</div>
         <div className="item_detail---box---info">
-          <div className="item_detail---box---info---name">{name}</div>
-          <div className="item_detail---box---info---others">
-            <div>
-              <div>gender</div>
-              <div>{gender}</div>
-            </div>
-            <div>
-              <div>status</div>
-              <div>{status}</div>
-            </div>
-            <div>
-              <div>species</div>
-              <div>{species}</div>
-            </div>
-            <div>
-              <div>type</div>
-              <div>{type}</div>
-            </div>
+          <div className="item_detail---box---info---image">
+            <img src={image} alt={name} width={300} />
           </div>
-        </div>
-        <div className="item_detail---box---image">
-          <img src={image} alt={name} width={300} />
-        </div>
-        <div className="item_detail---box---info">
-          <div className="item_detail---box---info---location">
-            <div className="item_detail---box---info---location---info">
-              <div>Location</div>
-              <div className="item_detail---box---info---location---info---name">
-                {locationObject.name}
-              </div>
-              <div className="item_detail---box---info---location---info---others">
-                <div>
-                  <div>Type</div>
-                  <div>{locationObject.type}</div>
-                </div>
-                <div>
-                  <div>Dimension</div>
-                  <div>{locationObject.dimension}</div>
-                </div>
-                <div>
-                  <div>Residents</div>
-                  <div>{locationObject.residents}</div>
-                </div>
-              </div>
-            </div>
+          <div className="item_detail---box---info---others">
+            <table>
+              <tr>
+                <th colSpan={2}>Gender</th>
+                <td>{gender}</td>
+              </tr>
+              <tr>
+                <th colSpan={2}>Status</th>
+                <td>{status}</td>
+              </tr>
+              <tr>
+                <th colSpan={2}>Species</th>
+                <td>{species}</td>
+              </tr>
+              <tr>
+                <th colSpan={2}>Type</th>
+                <td>{type}</td>
+              </tr>
+              <tr>
+                <th rowSpan={4}>Location</th>
+                <th>Name</th>
+                <td>{locationObject.name}</td>
+              </tr>
+              <tr>
+                <th>Type</th>
+                <td>{locationObject.type}</td>
+              </tr>
+              <tr>
+                <th>Dimension</th>
+                <td>{locationObject.dimension}</td>
+              </tr>
+              <tr>
+                <th>Residents</th>
+                <td>{locationObject.residents}</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>

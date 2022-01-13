@@ -43,8 +43,7 @@ const AppBody = () => {
   }, [data]);
 
   return (
-    <div>
-      {id && <ItemDetail id={id} />}
+    <div id="app_body">
       <div className="title">
         <Link to={`/${page - 1 || 1}${search}`}>
           <div className="title---arrow left" />
@@ -61,6 +60,7 @@ const AppBody = () => {
           <ItemCard key={i} data={e} />
         ))}
       </div>
+      {id && <ItemDetail id={id} />}
     </div>
   );
 };

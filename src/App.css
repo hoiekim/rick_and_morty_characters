@@ -1,6 +1,8 @@
-body {
-  background-color: rgb(34, 114, 47);
-  padding-top: 50px;
+#app_body {
+  margin-top: 50px;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 .title {
@@ -11,7 +13,7 @@ body {
   text-align: center;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(3, 29, 29);
+  background-color: rgb(22, 36, 36);
   padding: 1rem 3rem;
   color: white;
 }
@@ -50,7 +52,7 @@ body {
   width: 500px;
   padding: 1rem;
   margin: 2rem;
-  background-color: rgb(157, 216, 101);
+  background-color: rgb(243, 243, 243);
   color: #333;
   cursor: pointer;
   border-radius: 10px;
@@ -58,7 +60,7 @@ body {
 }
 
 .item_card:hover {
-  background-color: rgb(157, 211, 121);
+  background-color: rgb(83, 199, 131);
 }
 
 .item_card---title {
@@ -85,82 +87,60 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: calc(100vh - 50px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(3, 29, 29, 0.8);
   cursor: pointer;
 }
 
 .item_detail---box {
   border-radius: 10px;
-  background-color: rgb(157, 216, 101);
-  padding: 5rem;
+  background-color: white;
+  padding: 3rem;
 }
 
 .item_detail---box > div {
-  width: 300px;
+  margin: 1rem;
 }
 
-.item_detail---box---image {
-  margin: 1rem 0;
+.item_detail---box---name {
+  text-align: center;
+  font-size: 60px;
 }
 
 .item_detail---box---info {
-  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item_detail---box---info > div {
   text-align: center;
-}
-
-.item_detail---box---info---name {
-  font-size: 40px;
-  margin: 1rem 0;
+  margin: 1rem;
 }
 
 .item_detail---box---info---others {
+  width: 450px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
-.item_detail---box---info---others > div {
-  margin: 0 5px;
+table {
+  width: 100%;
 }
 
-.item_detail---box---info---others > div > div:nth-child(1) {
-  color: #777;
-  font-size: 15px;
+table > tr {
+  height: 37.5px;
 }
 
-.item_detail---box---info---location {
-  margin: 1rem 0;
-}
-
-.item_detail---box---info---location---info {
-  padding: 0.5rem;
-  white-space: pre-line;
-  background-color: rgb(180, 228, 135);
-}
-
-.item_detail---box---info---location---info
-  > .item_detail---box---info---location---info---name {
-  font-size: 30px;
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.item_detail---box---info---location---info---others {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.item_detail---box---info---location---info---others > div {
-  margin: 0 5px;
-}
-
-.item_detail---box---info---location---info---others > div > div:nth-child(1) {
-  color: #777;
-  font-size: 15px;
+table,
+tr,
+th,
+td {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
 }
