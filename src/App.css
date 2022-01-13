@@ -65,10 +65,32 @@
   width: 100%;
   height: 100%;
   background-color: rgba(30, 24, 138, 0.8);
+  cursor: pointer;
 }
 
 .item_detail---box {
   border-radius: 10px;
   background-color: rgb(250, 153, 43);
-  padding: 10rem 5rem;
+  padding: 5rem;
+}
+
+.item_detail---box > div {
+  width: 300px;
+}
+
+.item_detail---box---image {
+  margin: 1rem 0;
+}
+
+.item_detail---box---info {
+  margin: 1rem 0;
+}
+
+.item_detail---box---info > div {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.item_detail---box---info---name {
+  font-size: 40px;
 }

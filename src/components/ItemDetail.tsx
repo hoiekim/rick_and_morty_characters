@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { rickAndMorty } from "../lib/graphql";
 
 interface ItemDetailProps {
@@ -7,6 +7,7 @@ interface ItemDetailProps {
 }
 
 const ItemDetail = ({ id }: ItemDetailProps) => {
+  const navigate = useNavigate();
   const { data, isSuccess } = useQuery(id, () => {
     return rickAndMorty(`
         query {
@@ -30,17 +31,15 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
   if (!id) return <></>;
   if (!isSuccess) return <></>;
 
-  console.log(data);
-
   const { gender, image, name, species, status, type } = data;
   return (
-    <div className="item_detail">
+    <div className="item_detail" onClick={() => navigate("/")}>
       <div className="item_detail---box">
-        <div>
-          <img src={image} />
+        <div className="item_detail---box---image">
+          <img src={image} alt={name} width={300} />
         </div>
-        <div>
-          <div>{name}</div>
+        <div className="item_detail---box---info">
+          <div className="item_detail---box---info---name">{name}</div>
           <div>
             {[gender, status, species, type].filter((e) => e).join(" | ")}
           </div>
