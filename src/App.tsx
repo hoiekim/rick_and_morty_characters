@@ -1,35 +1,80 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import { useLocation } from "react-router-dom";
+import {
+  useParams,
+  useLocation,
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
+import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import ItemCard from "./components/ItemCard";
 import ItemDetail from "./components/ItemDetail";
 import { rickAndMorty } from "./lib/graphql";
+import "./App.css";
 
-const App = () => {
-  const [characters, setCharacters] = useState([]);
-  const { pathname } = useLocation();
-  const path = pathname.substring(1, pathname.length);
+const queryClient = new QueryClient();
 
-  useEffect(() => {
-    rickAndMorty(`
+const AppBody = () => {
+  const [pages, setPages] = useState(1);
+
+  const { search } = useLocation();
+  const { pageParam = "1" } = useParams();
+  const page = +pageParam || 1;
+  const params = new URLSearchParams(search);
+  const id = params.get("id");
+
+  const { data } = useQuery(`characters-${page}`, () => {
+    return rickAndMorty(`
       query {
-        characters(page: 1, filter: { name: "rick" }) {
+        characters(page: ${page}) {
+          info { pages }
           results { id name status species }
         }
       }
-    `).then((r) => setCharacters(r?.characters.results));
-  }, []);
+    `).then((r) => r.characters);
+  });
+
+  const characters = (data?.results as Array<any>) || [];
+
+  useEffect(() => {
+    setPages(data?.info?.pages || pages);
+  }, [data]);
 
   return (
-    <div className="body">
-      {path && <ItemDetail id={path} />}
-      <div className="title">Rick and Morty Characters</div>
+    <div>
+      {id && <ItemDetail id={id} />}
+      <div className="title">
+        <Link to={`/${page - 1 || 1}${search}`}>
+          <div className="title---arrow left" />
+        </Link>
+        <div>
+          Rick and Morty Characters {page} / {pages}
+        </div>
+        <Link to={`/${page >= pages ? page : page + 1}${search}`}>
+          <div className="title---arrow right" />
+        </Link>
+      </div>
       <div className="list">
         {characters?.map((e, i) => (
           <ItemCard key={i} data={e} />
         ))}
       </div>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/1" replace />} />
+          <Route path="/:pageParam" element={<AppBody />} />
+        </Routes>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 };
 

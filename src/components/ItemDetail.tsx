@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { rickAndMorty } from "../lib/graphql";
 
 interface ItemDetailProps {
@@ -7,8 +7,10 @@ interface ItemDetailProps {
 }
 
 const ItemDetail = ({ id }: ItemDetailProps) => {
+  const { pageParam = "1" } = useParams();
+  const page = +pageParam || 1;
   const navigate = useNavigate();
-  const { data, isSuccess } = useQuery(id, () => {
+  const { data, isSuccess } = useQuery(`character-${id}`, () => {
     return rickAndMorty(`
         query {
           character(id: ${id}) {
@@ -18,11 +20,13 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
             species
             type
             gender
-            origin { id }
-            location { id }
+            location {
+              name
+              type
+              dimension
+              residents { name }
+            }
             image
-            episode { id }
-            created
           }
         }
       `).then((r) => r.character);
@@ -31,17 +35,62 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
   if (!id) return <></>;
   if (!isSuccess) return <></>;
 
-  const { gender, image, name, species, status, type } = data;
+  const { gender, image, name, species, status, type, location } = data;
+
+  // Unfortunately, location sometimes returns null.
+  const locationObject =
+    (location && { ...location, residents: location.residents.length || 0 }) ||
+    {};
+
   return (
-    <div className="item_detail" onClick={() => navigate("/")}>
+    <div className="item_detail" onClick={() => navigate(`/${page}`)}>
       <div className="item_detail---box">
+        <div className="item_detail---box---info">
+          <div className="item_detail---box---info---name">{name}</div>
+          <div className="item_detail---box---info---others">
+            <div>
+              <div>gender</div>
+              <div>{gender}</div>
+            </div>
+            <div>
+              <div>status</div>
+              <div>{status}</div>
+            </div>
+            <div>
+              <div>species</div>
+              <div>{species}</div>
+            </div>
+            <div>
+              <div>type</div>
+              <div>{type}</div>
+            </div>
+          </div>
+        </div>
         <div className="item_detail---box---image">
           <img src={image} alt={name} width={300} />
         </div>
         <div className="item_detail---box---info">
-          <div className="item_detail---box---info---name">{name}</div>
-          <div>
-            {[gender, status, species, type].filter((e) => e).join(" | ")}
+          <div className="item_detail---box---info---location">
+            <div className="item_detail---box---info---location---info">
+              <div>Location</div>
+              <div className="item_detail---box---info---location---info---name">
+                {locationObject.name}
+              </div>
+              <div className="item_detail---box---info---location---info---others">
+                <div>
+                  <div>Type</div>
+                  <div>{locationObject.type}</div>
+                </div>
+                <div>
+                  <div>Dimension</div>
+                  <div>{locationObject.dimension}</div>
+                </div>
+                <div>
+                  <div>Residents</div>
+                  <div>{locationObject.residents}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

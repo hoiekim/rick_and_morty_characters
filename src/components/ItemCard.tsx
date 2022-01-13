@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 interface ItemCardProps {
   data: {
@@ -10,10 +10,11 @@ interface ItemCardProps {
 }
 
 const ItemCard = ({ data }: ItemCardProps) => {
+  const { pathname } = useLocation();
   const { id, name, status, species } = data;
   return (
     <div className="item_card">
-      <Link to={`/${id}`}>
+      <Link to={`${pathname}?id=${id}`}>
         <div className="item_card---title">{name}</div>
         <div className="item_card---info">
           <span>
