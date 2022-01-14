@@ -61,11 +61,11 @@ npm run test
 
 React Query provides useful React hook called `useQuery`. What it does is techincally same as fetching data from an url and setting the response to a state variable. However, React Query has several extra features that can take a long time setting up by yourself. The followings are some examples of the benefits:
 
-- It caches the response data with custom "query keys".
+- Caches the response data with custom "query keys".
 - Returns useful properties like `status` along with fetched data.
 - Lots of useful configurations for example: `refetchOnReconnect`, `refetchOnWindowFocus`, etc.
 
-This project is currently taking advantage of caching feature of React Query, but other features have lots of potential to be useful for extension of the project in the future.
+This project is currently taking advantage of caching feature of React Query and error handling, but other features have lots of potential to be useful for extension of the project in the future.
 
 ## [React Router](https://github.com/remix-run/react-router)
 
@@ -87,7 +87,7 @@ The following is what I would do differently / what I would do next if I had mor
 
 Currently all css script is written in one file, `src/App.css`(except some global styles). This is okay since there is not a lot of demands for complicated styling for now. But if we are planning to develop this app to be so, there should be consideration to make sure the styling scripts don't get overwhelming 😨
 
-Personally I prefer using [Styled Components](https://styled-components.com/docs) which is a 3rd party library. This library works well with a solid design system that has well defined components. Or we can keep current style while separating files by appropriate size and using [Sass](https://sass-lang.com/documentation) for easier coding & readibility.
+Personally I prefer using [Styled Components](https://styled-components.com/docs) which is a 3rd party library. This library works well with a solid design system that has well defined components. Or we can keep current way while separating files by appropriate size and using [Sass](https://sass-lang.com/documentation) for easier coding & readibility.
 
 ## Improving UX / UI
 
