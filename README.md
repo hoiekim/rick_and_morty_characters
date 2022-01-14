@@ -35,7 +35,7 @@ src
 | |-...
 ```
 
-Each routing component(a.k.a. "page") is saved in `src/pages` as a directory for example, `src/pages/Main` for `"/"` route. Each of those page directories should have `index.tsx` that exports default component and `components` folder that has children components in that page. Components that are shared by more than a page are saved in `src/pages/common` directory and other pieces of code that are not React components are saved in `lib` directory.
+Each routing component(a.k.a. "page") is saved in `src/pages` as a directory for example, `src/pages/Main` for `"/"` route. Each of those page directories should have `index.tsx` that exports default component and `components` folder that has children components in that page. Components that are shared by more than a page are saved in `src/pages/common` directory and other pieces of code that are not React components are saved in `src/lib` directory.
 
 This system has advantage that components architecture is easy to understand and expand. One downside is that when the project gets complicated, it's hard to check existence of duplicated or similar components across pages.
 
