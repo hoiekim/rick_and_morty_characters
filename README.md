@@ -43,7 +43,7 @@ This system has advantage that components architecture is easy to understand and
 
 In case external api response returns in an unexpected way, I'm using `useQuery` hook's error handling features. `useQuery` returns an object that has properties called `status`, `isError` and `isSuccess`. These properties' values can be used to determine if fetching data was successful. For example, [this code](/src/pages/Main/index.tsx#L47) and [this code](/src/pages/Main/components/ItemDetail.tsx#L52)
 
-Another way of handling errors is using `ErrorBoundary` component. This component catches errors that are thrown in its children components so that we can decide to render an error page or not. Refer [this file](/src/pages/common/ErrorBoundary.tsx) and [this code](/src/App.tsx#L14-L19).
+Another way of handling errors is using `ErrorBoundary` component. This component catches errors that are thrown in its children components so that we can decide to render an error page or not. Refer [this file](/src/pages/common/ErrorBoundary.tsx) and [this code](/src/App.tsx#L13-L18).
 
 # Testing
 
