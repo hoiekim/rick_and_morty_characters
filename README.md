@@ -31,7 +31,14 @@ src
 |-lib
 |-pages
 | |-common
+| | |-ErrorBoundary.tsx
 | |-Main
+| | |-components
+| | | |-ItemCard.tsx
+| | | |-ItemDetail.tsx
+| | |-index.tsx
+| |-SomeOtherPage1
+| |-SomeOtherPage2
 | |-...
 ```
 
