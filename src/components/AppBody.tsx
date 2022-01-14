@@ -14,7 +14,7 @@ const AppBody = () => {
   const params = new URLSearchParams(search);
   const id = params.get("id");
 
-  const { data } = useQuery(`characters-${page}`, () => {
+  const { data, status } = useQuery(`characters-${page}`, () => {
     return rickAndMorty(`
       query {
         characters(page: ${page}) {
@@ -30,6 +30,10 @@ const AppBody = () => {
   useEffect(() => {
     setPages(data?.info?.pages || pages);
   }, [data, pages]);
+
+  if (status === "error") {
+    return <div id="app_body"></div>;
+  }
 
   return (
     <div id="app_body">
