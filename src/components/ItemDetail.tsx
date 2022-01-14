@@ -6,11 +6,27 @@ interface ItemDetailProps {
   id: string;
 }
 
+interface CharacterData {
+  id: string;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  image: string;
+  location: {
+    name: string;
+    type: string;
+    dimension: string;
+    residents: { name: string }[];
+  } | null;
+}
+
 const ItemDetail = ({ id }: ItemDetailProps) => {
   const { pageParam = "1" } = useParams();
   const page = +pageParam || 1;
   const navigate = useNavigate();
-  const { data, isSuccess } = useQuery(`character-${id}`, () => {
+  const { data, isSuccess } = useQuery<CharacterData>(`character-${id}`, () => {
     return rickAndMorty(`
         query {
           character(id: ${id}) {
@@ -33,14 +49,9 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
   });
 
   if (!id) return <></>;
-  if (!isSuccess) return <></>;
+  if (!isSuccess || !data) return <></>;
 
   const { gender, image, name, species, status, type, location } = data;
-
-  // Unfortunately, location sometimes returns null.
-  const locationObject =
-    (location && { ...location, residents: location.residents.length || 0 }) ||
-    {};
 
   return (
     <div className="item_detail" onClick={() => navigate(`/${page}`)}>
@@ -53,37 +64,37 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
           <div className="item_detail---box---info---others">
             <table>
               <tr>
-                <th colSpan={2}>Gender</th>
-                <td>{gender}</td>
+                <th>Gender</th>
+                <td colSpan={2}>{gender}</td>
               </tr>
               <tr>
-                <th colSpan={2}>Status</th>
-                <td>{status}</td>
+                <th>Status</th>
+                <td colSpan={2}>{status}</td>
               </tr>
               <tr>
-                <th colSpan={2}>Species</th>
-                <td>{species}</td>
+                <th>Species</th>
+                <td colSpan={2}>{species}</td>
               </tr>
               <tr>
-                <th colSpan={2}>Type</th>
-                <td>{type}</td>
+                <th>Type</th>
+                <td colSpan={2}>{type}</td>
               </tr>
               <tr>
                 <th rowSpan={4}>Location</th>
                 <th>Name</th>
-                <td>{locationObject.name}</td>
+                <td>{location && location.name}</td>
               </tr>
               <tr>
                 <th>Type</th>
-                <td>{locationObject.type}</td>
+                <td>{location && location.type}</td>
               </tr>
               <tr>
                 <th>Dimension</th>
-                <td>{locationObject.dimension}</td>
+                <td>{location && location.dimension}</td>
               </tr>
               <tr>
                 <th>Residents</th>
-                <td>{locationObject.residents}</td>
+                <td>{location && location.residents.length}</td>
               </tr>
             </table>
           </div>

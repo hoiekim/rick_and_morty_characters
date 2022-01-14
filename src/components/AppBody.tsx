@@ -5,6 +5,16 @@ import ItemCard from "./ItemCard";
 import ItemDetail from "./ItemDetail";
 import { rickAndMorty } from "../lib/graphql";
 
+interface CharactersData {
+  info: { pages: number };
+  results: {
+    id: string;
+    name: string;
+    status: string;
+    species: string;
+  }[];
+}
+
 const AppBody = () => {
   const [pages, setPages] = useState(1);
 
@@ -14,8 +24,10 @@ const AppBody = () => {
   const params = new URLSearchParams(search);
   const id = params.get("id");
 
-  const { data, status } = useQuery(`characters-${page}`, () => {
-    return rickAndMorty(`
+  const { data, status } = useQuery<CharactersData>(
+    `characters-${page}`,
+    () => {
+      return rickAndMorty(`
       query {
         characters(page: ${page}) {
           info { pages }
@@ -23,9 +35,10 @@ const AppBody = () => {
         }
       }
     `).then((r) => r.characters);
-  });
+    }
+  );
 
-  const characters = (data?.results as Array<any>) || [];
+  const characters = data?.results || [];
 
   useEffect(() => {
     setPages(data?.info?.pages || pages);

@@ -1,7 +1,7 @@
 import { RICK_AND_MORTY_API_URL } from "./constants";
 
 /**
- * Get Rick and Morty characters data using Rick and Morty API(Graphql)
+ * Get data using Rick and Morty API(Graphql)
  * @param query graphql query string
  * @returns data object as promise
  */
