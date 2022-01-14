@@ -51,13 +51,13 @@ const AppBody = () => {
   return (
     <div id="app_body">
       <div className="title">
-        <Link to={`/${page - 1 || 1}${search}`}>
+        <Link to={`/${page - 1 || pages}${search}`}>
           <div className="title---arrow left" />
         </Link>
         <div>
           Rick and Morty Characters {page} / {pages}
         </div>
-        <Link to={`/${page >= pages ? page : page + 1}${search}`}>
+        <Link to={`/${page >= pages ? 1 : page + 1}${search}`}>
           <div className="title---arrow right" />
         </Link>
       </div>
