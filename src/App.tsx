@@ -1,8 +1,7 @@
-import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import AppBody from "./components/AppBody";
-import ErrorBoundary from "./components/ErrorBoundary";
+import Main from "./pages/Main";
+import ErrorBoundary from "./pages/common/ErrorBoundary";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -14,7 +13,7 @@ const App = () => {
         <ErrorBoundary>
           <Routes>
             <Route path="/" element={<Navigate to="/1" replace />} />
-            <Route path="/:pageParam" element={<AppBody />} />
+            <Route path="/:pageParam" element={<Main />} />
           </Routes>
         </ErrorBoundary>
       </QueryClientProvider>

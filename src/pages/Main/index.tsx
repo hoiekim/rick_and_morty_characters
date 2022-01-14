@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import ItemCard from "./ItemCard";
-import ItemDetail from "./ItemDetail";
-import { rickAndMorty } from "../lib/graphql";
+import ItemCard from "./components/ItemCard";
+import ItemDetail from "./components/ItemDetail";
+import { rickAndMorty } from "../../lib/graphql";
 
 interface CharactersData {
   info: { pages: number };
@@ -15,7 +15,7 @@ interface CharactersData {
   }[];
 }
 
-const AppBody = () => {
+const Main = () => {
   const [pages, setPages] = useState(1);
 
   const { search } = useLocation();
@@ -71,4 +71,4 @@ const AppBody = () => {
   );
 };
 
-export default AppBody;
+export default Main;

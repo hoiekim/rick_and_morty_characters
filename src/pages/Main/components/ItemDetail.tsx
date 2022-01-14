@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
-import { rickAndMorty } from "../lib/graphql";
+import { rickAndMorty } from "../../../lib/graphql";
 
 interface ItemDetailProps {
   id: string;
