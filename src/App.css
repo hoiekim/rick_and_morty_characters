@@ -13,7 +13,7 @@
   text-align: center;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(22, 36, 36);
+  background-color: #162424;
   padding: 1rem 3rem;
   color: white;
 }
@@ -52,15 +52,15 @@
   width: 500px;
   padding: 1rem;
   margin: 2rem;
-  background-color: rgb(243, 243, 243);
+  background-color: #f3f3f3;
   color: #333;
   cursor: pointer;
   border-radius: 10px;
-  box-shadow: rgba(10, 15, 60, 0.1) 10px 10px 10px;
+  box-shadow: #0a0f3c1a 10px 10px 10px;
 }
 
 .item_card:hover {
-  background-color: rgb(83, 199, 131);
+  background-color: #53c783;
 }
 
 .item_card---title {
@@ -91,7 +91,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(3, 29, 29, 0.8);
+  background-color: #031d1dcc;
   cursor: pointer;
 }
 

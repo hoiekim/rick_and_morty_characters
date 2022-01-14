@@ -48,7 +48,7 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
         <div className="item_detail---box---name">{name}</div>
         <div className="item_detail---box---info">
           <div className="item_detail---box---info---image">
-            <img src={image} alt={name} width={300} />
+            <img src={image} alt={name} width={300} height={300} />
           </div>
           <div className="item_detail---box---info---others">
             <table>
