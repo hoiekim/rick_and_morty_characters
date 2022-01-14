@@ -20,9 +20,9 @@ Following is a simplified tree that shows how `App` consists of smaller componen
 
 # Handling Errors
 
-In case external api response returns in an unexpected way, I'm using `useQuery` hook's error handling features. `useQuery` returns an object that has properties called `status`, `isError` and `isSuccess`. These properties' values can be used to determine if fetching data was successful. For example, [this code](/src/components/AppBody.tsx#L34-L36) and [this code](/src/components/ItemDetail.tsx#L52)
+In case external api response returns in an unexpected way, I'm using `useQuery` hook's error handling features. `useQuery` returns an object that has properties called `status`, `isError` and `isSuccess`. These properties' values can be used to determine if fetching data was successful. For example, [this code](/src/components/AppBody.tsx#L47-L49) and [this code](/src/components/ItemDetail.tsx#L52)
 
-Another way of handling error is using `ErrorBoundary` component. This component catches error that is thrown in its children components so that we can decide to render error page or not. Refer [this file](/src/components/ErrorBoundary.tsx) and [this code](/src/App.tsx#14-L19).
+Another way of handling error is using `ErrorBoundary` component. This component catches error that is thrown in its children components so that we can decide to render error page or not. Refer [this file](/src/components/ErrorBoundary.tsx) and [this code](/src/App.tsx#L14-L19).
 
 # Testing
 
