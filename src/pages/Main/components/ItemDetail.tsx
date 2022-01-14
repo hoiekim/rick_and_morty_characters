@@ -63,39 +63,41 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
           </div>
           <div className="item_detail---box---info---others">
             <table>
-              <tr>
-                <th>Gender</th>
-                <td colSpan={2}>{gender}</td>
-              </tr>
-              <tr>
-                <th>Status</th>
-                <td colSpan={2}>{status}</td>
-              </tr>
-              <tr>
-                <th>Species</th>
-                <td colSpan={2}>{species}</td>
-              </tr>
-              <tr>
-                <th>Type</th>
-                <td colSpan={2}>{type}</td>
-              </tr>
-              <tr>
-                <th rowSpan={4}>Location</th>
-                <th>Name</th>
-                <td>{location && location.name}</td>
-              </tr>
-              <tr>
-                <th>Type</th>
-                <td>{location && location.type}</td>
-              </tr>
-              <tr>
-                <th>Dimension</th>
-                <td>{location && location.dimension}</td>
-              </tr>
-              <tr>
-                <th>Residents</th>
-                <td>{location && location.residents.length}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th>Gender</th>
+                  <td colSpan={2}>{gender}</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td colSpan={2}>{status}</td>
+                </tr>
+                <tr>
+                  <th>Species</th>
+                  <td colSpan={2}>{species}</td>
+                </tr>
+                <tr>
+                  <th>Type</th>
+                  <td colSpan={2}>{type}</td>
+                </tr>
+                <tr>
+                  <th rowSpan={4}>Location</th>
+                  <th>Name</th>
+                  <td>{location && location.name}</td>
+                </tr>
+                <tr>
+                  <th>Type</th>
+                  <td>{location && location.type}</td>
+                </tr>
+                <tr>
+                  <th>Dimension</th>
+                  <td>{location && location.dimension}</td>
+                </tr>
+                <tr>
+                  <th>Residents</th>
+                  <td>{location && location.residents.length}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
