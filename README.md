@@ -28,17 +28,22 @@ File structure generally follows components architecture. See below example:
 
 ```
 src
+|
 |-lib
+|
 |-pages
+| |
 | |-common
 | | |-ErrorBoundary.tsx
+| |
 | |-Main
 | | |-components
-| | | |-ItemCard.tsx
-| | | |-ItemDetail.tsx
 | | |-index.tsx
+| |
 | |-SomeOtherPage1
+| |
 | |-SomeOtherPage2
+| |
 | |-...
 ```
 
