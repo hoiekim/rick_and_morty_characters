@@ -45,7 +45,7 @@ const Main = () => {
   }, [data, pages]);
 
   if (status === "error") {
-    return <div id="app_body"></div>;
+    return <div id="app_body">Something went wrong!</div>;
   }
 
   return (
