@@ -5,7 +5,7 @@ import ItemCard from "./components/ItemCard";
 import ItemDetail from "./components/ItemDetail";
 import { rickAndMorty } from "../../lib/graphql";
 
-interface CharactersData {
+export interface CharactersData {
   info: { pages: number };
   results: {
     id: string;
@@ -51,15 +51,17 @@ const Main = () => {
   return (
     <div id="app_body">
       <div className="title">
-        <Link to={`/${page - 1 || pages}${search}`}>
-          <div className="title---arrow left" />
-        </Link>
+        <Link
+          className="title---arrow left"
+          to={`/${page - 1 || pages}${search}`}
+        />
         <div>
           Rick and Morty Characters {page} / {pages}
         </div>
-        <Link to={`/${page >= pages ? 1 : page + 1}${search}`}>
-          <div className="title---arrow right" />
-        </Link>
+        <Link
+          className="title---arrow right"
+          to={`/${page >= pages ? 1 : page + 1}${search}`}
+        />
       </div>
       <div className="list">
         {characters?.map((e, i) => (

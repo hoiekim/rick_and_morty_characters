@@ -59,7 +59,7 @@ Another way of handling errors is using `ErrorBoundary` component. This componen
 
 # Testing
 
-Refer [this file](/src/App.test.tsx) for full testing code.
+Testing code is written by pages. Test cases are chosen to cover all distict UI elements and user interactions. Refer [this file](/src/pages/Main/index.test.tsx) for example.
 
 To run test, execute following command in your terminal:
 

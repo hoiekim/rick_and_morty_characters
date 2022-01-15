@@ -6,7 +6,7 @@ interface ItemDetailProps {
   id: string;
 }
 
-interface CharacterData {
+export interface CharacterData {
   id: string;
   name: string;
   status: string;
