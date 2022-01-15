@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { rickAndMorty } from "../../../lib/graphql";
@@ -48,13 +49,23 @@ const ItemDetail = ({ id }: ItemDetailProps) => {
       `).then((r) => r.character);
   });
 
+  const closeItemDetail = () => navigate(`/${page}`);
+
+  // for accessibility
+  useEffect(() => {
+    document.addEventListener("keydown", closeItemDetail);
+    return () => {
+      document.removeEventListener("keydown", closeItemDetail);
+    };
+  }, []);
+
   if (!id) return <></>;
   if (!isSuccess || !data) return <></>;
 
   const { gender, image, name, species, status, type, location } = data;
 
   return (
-    <div className="item_detail" onClick={() => navigate(`/${page}`)}>
+    <div className="item_detail" onClick={closeItemDetail}>
       <div className="item_detail---box">
         <div className="item_detail---box---name">{name}</div>
         <div className="item_detail---box---info">

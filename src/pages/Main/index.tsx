@@ -54,13 +54,15 @@ const Main = () => {
         <Link
           className="title---arrow left"
           to={`/${page - 1 || pages}${search}`}
+          aria-label="Go to the previous page"
         />
-        <div>
+        <h1>
           Rick and Morty Characters {page} / {pages}
-        </div>
+        </h1>
         <Link
           className="title---arrow right"
           to={`/${page >= pages ? 1 : page + 1}${search}`}
+          aria-label="Go to the next page"
         />
       </div>
       <div className="list">

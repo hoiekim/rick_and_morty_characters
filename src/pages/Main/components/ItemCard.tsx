@@ -14,7 +14,10 @@ const ItemCard = ({ data }: ItemCardProps) => {
   const { id, name, status, species } = data;
   return (
     <div className="item_card">
-      <Link to={`${pathname}?id=${id}`}>
+      <Link
+        to={`${pathname}?id=${id}`}
+        aria-label={`Open detail information about ${name}`}
+      >
         <div className="item_card---title">{name}</div>
         <div className="item_card---info">
           <span>
